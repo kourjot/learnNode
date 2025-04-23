@@ -1,0 +1,19 @@
+Aggregation Pipeline
+MongoDB mein Aggregation Pipeline ka concept hota hai, jisme hum data ko different stages ke through process karte hain. Har stage ek specific operation karta hai, aur ek stage ka result next stage ko pass hota hai. Isse hum complex operations ko efficiently execute kar sakte hain.
+
+Common Aggregation Stages
+$match: Yeh stage filters karta hai documents ko kisi specific condition ke basis pe. (SQL ke WHERE ki tarah)
+
+$group: Yeh stage documents ko group karta hai kisi field ke basis pe (SQL ke GROUP BY ki tarah).
+
+$sort: Yeh stage documents ko sort karta hai kisi field ke basis pe.
+
+$project: Yeh stage fields ko include ya exclude karta hai output mein.
+
+$limit: Yeh stage result ko limit karta hai, jaise kitne documents chahiye.
+
+$skip: Yeh stage kuch documents ko skip karne ke liye use hota hai.
+
+$unwind: Yeh stage arrays ko separate documents mein convert karta hai.
+
+$addFields: Yeh stage naye fields ko add karta hai ya existing fields ko modify karta hai.

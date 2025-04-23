@@ -1,0 +1,29 @@
+Sharding MongoDB ka ek data distribution technique hai jisme hum large datasets ko multiple servers (shards) mein distribute karte hain. Yeh technique tab use hoti hai jab ek single machine pe data handle karna mushkil ho jaye, ya performance slow ho jaye.
+
+🔸 Why Sharding is Needed? (Kyun zaruri hai?)
+Jab data bahut zyada ho jaye (terabytes se bhi zyada)
+
+Jab read/write operations slow hone lag jaayein
+
+Jab horizontal scaling chahiye (i.e. multiple machines pe data distribute karna ho)
+
+🔸 How Sharding Works (Kaise kaam karta hai?)
+Sharding architecture mein mainly 3 components hote hain:
+
+Shard
+
+Actual data yahan store hota hai
+
+Har shard ek MongoDB server ya replica set ho sakta hai
+
+Config Server
+
+Yeh metadata store karta hai – jaise ki kis shard mein kaunsa data hai
+
+Minimum 3 config servers hone chahiye for fault tolerance
+
+Query Router (mongos)
+
+Yeh client aur shards ke beech mein bridge ka kaam karta hai
+
+Jab client koi query bhejta hai, to mongos decide karta hai ki query kaunse shard pe jaayegi

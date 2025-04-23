@@ -1,0 +1,108 @@
+MongoDB Query Optimization
+1. Use Indexes
+Purpose: Indexes queries ko fast banate hain, kyunki MongoDB ko poore collection ko scan nahi karna padta.
+
+Types of Indexes:
+
+Single-Field Index: Ek field par index. Example:
+
+
+db.users.createIndex({ email: 1 })
+Compound Index: Multiple fields par index. Example:
+
+
+db.users.createIndex({ name: 1, city: 1 })
+Text Index: Text search ke liye index. Example:
+
+
+db.users.createIndex({ description: "text" })
+
+2. Avoid Scanning the Entire Collection
+
+Efficient Querying: Query likhte waqt aise fields ka use karo jo indexed ho, jisse MongoDB ko poore collection ko scan na karna pade.
+
+Example: Agar email field pe index banaya hai, toh query likhna:
+
+
+db.users.find({ email: "abc@example.com" })
+3. Use explain() to Analyze Queries
+Purpose: explain() function se query performance ko analyze kar sakte ho.
+
+Usage: Yeh tumhe bataega ki query index ka use kar rahi hai ya nahi, aur query ki execution time kitni hai.
+
+Example:
+
+db.users.find({ email: "abc@example.com" }).explain("executionStats")
+4. Limit the Fields You Return
+Purpose: Sirf zaroori fields hi return karo, jisse unnecessary data fetch na ho aur query fast ho.
+
+Example:
+
+js
+Copy
+Edit
+db.users.find({ city: "Ganganagar" }, { name: 1, email: 1 })
+5. Use limit() and skip() for Pagination
+Purpose: Large datasets ko efficiently paginate karne ke liye limit() aur skip() use karo.
+
+Example:
+
+
+db.users.find().skip(20).limit(10)
+6. Avoid $where Clause
+Purpose: $where clause ko avoid karo, kyunki yeh performance ko slow kar sakta hai.
+
+Note: $where ko tab use karo jab koi aur alternative available na ho.
+
+7. Use Aggregation Pipeline Efficiently
+Purpose: Aggregation queries ko optimize karna zaroori hai, taaki tum zyada data ko efficiently process kar sako.
+
+Tips:
+
+Filter operations (jaise $match) ko pehle rakho taaki unnecessary data ko filter kiya ja sake.
+
+Example:
+
+
+db.users.aggregate([
+  { $match: { city: "Ganganagar" } },
+  { $group: { _id: "$city", count: { $sum: 1 } } }
+])
+8. Use Sharding for Large Datasets
+Purpose: Large datasets ko multiple servers par distribute karne ke liye sharding ka use karo.
+
+Benefit: Isse query performance improve hota hai.
+
+9. Optimize Query Filters
+Purpose: Query likhte waqt optimal filters ka use karo jisse query execution fast ho.
+
+Example:
+
+
+db.users.find({ age: { $gt: 20 }, city: "Ganganagar" })
+10. Keep Your Data Model Simple
+Purpose: Simple data model rakhna zaroori hai, jisme denormalization aur embedding ka use kiya jaye. Frequently accessed data ko ek document mein rakhna better hota hai.
+
+Summary of Techniques for Query Optimization:
+
+
+
+Use indexes for frequently queried fields.
+
+Avoid scanning the entire collection by using indexes.
+
+Use explain() to analyze query performance.
+
+Limit the fields returned in queries to improve performance.
+
+Use limit() and skip() for pagination.
+
+Avoid using the $where clause.
+
+Optimize aggregation pipeline for better performance.
+
+Use sharding for large datasets.
+
+Optimize query filters to make queries efficient.
+
+Keep the data model simple and efficient.

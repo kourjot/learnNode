@@ -1,0 +1,50 @@
+📘 WebSocket Notes (Interview Ready) – Theory Only
+🔹 What is WebSocket?
+WebSocket ek communication protocol hai jo real-time, full-duplex (two-way) communication allow karta hai client (browser) aur server ke beech.
+
+🔹 Difference Between HTTP and WebSocket:
+
+Feature	HTTP (Request-Response)	WebSocket (Full-Duplex)
+Communication Type	One-way	Two-way (client ↔ server)
+Connection	Short-lived	Persistent (open rehta hai)
+Real-Time Support	❌ Not real-time	✅ Real-time data exchange
+Usage	Static websites, APIs	Chat apps, live notifications, games
+
+
+🔹 WebSocket Flow:
+Handshake – Client ek WebSocket request bhejta hai (ws:// ya wss://)
+
+Connection Established – Server accept karta hai
+
+Data Exchange – Dono taraf se real-time messages exchange hote hain
+
+Connection Close – Jab kaam ho jata hai, connection band hota hai
+
+🔹 Real-life Use Cases:
+💬 Chat Applications (WhatsApp Web, Slack)
+
+📈 Live Stock Prices
+
+🕹️ Online Multiplayer Games
+
+📲 Real-time Notifications
+
+🚖 Live Location Tracking (Zomato, Uber)
+
+🔹 WebSocket Advantages:
+Fast and lightweight
+
+Persistent connection (no need for repeated requests)
+
+Perfect for real-time apps
+
+Reduces server load compared to polling
+
+🔹 Keywords to Remember:
+Real-time
+
+Bi-directional communication
+
+Persistent connection
+
+ws:// or wss:// protocol
