@@ -1,8 +1,6 @@
 // Given an array of student objects with name and marks (array of numbers), return a new array of student names sorted in descending order of their total marks.
 
 // op=["Diya", "Aarav", "Kabir"]
-
-
 let arr=[
     { name: "Aarav", marks: [88, 76, 92] },
     { name: "Diya", marks: [99, 91, 85] },
