@@ -1,0 +1,7 @@
+## . **Database Schema Design**
+
+- **Task:** Design a schema for a blogging application that includes users, blog posts, and comments.
+- **Requirements:**
+    - Use Mongoose to define relationships (e.g., referencing comments inside blog posts).
+    - Include timestamps for creation and updates.
+    - Add indexes to optimize queries for common fields like `userId`.
