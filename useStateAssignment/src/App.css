@@ -1,0 +1,39 @@
+.container {
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.card {
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.card img {
+  width: 30%;
+  border-radius: 10px;
+}
+
+.buttons {
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+footer {
+  margin-top: 30px;
+  font-weight: bold;
+}
