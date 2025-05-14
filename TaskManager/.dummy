@@ -1,0 +1,9 @@
+task-manager/
+├── data/
+│   └── tasks.json         # File-based DB
+├── routes/
+│   └── tasks.js           # Route handler functions
+├── utils/
+│   └── fileHandler.js     # Read/write utility
+├── server.js              # Entry point
+└── README.md
