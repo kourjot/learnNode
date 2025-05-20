@@ -1,0 +1,63 @@
+“Find the average order amount per customer”
+db.orders.aggregate([
+    {
+        $group:{
+            _id:"$customreId",
+            totalOrders:{$sum:1},
+            avgAmount:{$avg:"$amount"}
+        }
+    }
+
+])
+
+SELECT customre_id ,Count(*) total_order ,AVG(amount) AS avg_amount FROM orders GROUP BY customer_id
+
+const user:[{type:Schema.Types.ObjectID,ref:"student"}]
+
+
+await Post.find().populate("User","name email")
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String
+});
+const User = mongoose.model("User", userSchema);
+
+
+
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+});
+const Post = mongoose.model("Post", postSchema);
+
+
+const post=await Post.aggregate([
+    {
+        $lookup:{
+            from :"users",
+            localField:"user",
+            foreginField:"_id",
+            as:"userInfo"
+        }
+    },
+    {
+        $unwind:"$userInfo"
+    }
+])
+
+const post=await Post.aggregate([
+    {
+        $lookup:{
+            from :"users",
+            localField:"User",
+            foreginField:"_id",
+            as:"userInfo"
+
+        }
+    },
+    {
+        $unwind:"$userInfo"
+    }
+])

@@ -21,4 +21,4 @@ function isAnagram(s1,s2){
     // console.log(ss1)
 }
 
-isAnagram(s1,s2)
+isAnagram(s1,s2) 

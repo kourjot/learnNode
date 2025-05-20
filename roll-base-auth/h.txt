@@ -1,0 +1,156 @@
+Show all documents from the customers collection.
+db.customers.find()
+Display only the name and email fields from the users collection.
+
+db.users.find({},{name:1,email:1})
+
+db.users.find({name:"Rahul"})
+
+Get all departments located in "Mumbai".
+
+db.departments.find({name: 'Finance'})
+
+Find all orders where the amount is greater than 1000.
+
+db.orders.find({amount:{$gte:1000}})
+
+Find employees whose age is between 25 and 35.
+
+db.employees.find({age:{$gte:25 ,$lte:35}})
+
+Sort all customers by their name in descending order.
+
+db.customers.find().sort({name:-1})
+
+Show only the first 10 users from the users collection.
+
+
+db.users.find().limit(10)
+
+Count the total number of documents in the employees collection.
+
+db.employees.find().count()
+
+Find all customers whose name starts with the letter "A".
+
+db.customers.find({name:{$regex:/DA/,$options:"i"}})
+
+db.customers.find({name:{$regex:/Alice/,$options:"i"}})
+
+Find users who have verified their email.
+
+db.users.find({emailverifyed:true})
+
+Get all employees who joined after 1st Jan 2022.
+
+db.employees.find({join:{$gt: new Date("2022-01-01")}})
+
+Show departments that have more than 10 employees.
+
+db.employees.aggregate([
+    {
+        $group:{
+            _id:"$departmentId",
+            x:{$sum:1}
+        }
+    },
+    {
+        $match:{
+            x:{$gt:10}
+        }
+    }
+])
+
+Find all orders placed by a customer named "Suresh".
+
+db.customers.aggregate([
+    {
+        $match:{
+            name:"Eve"
+        }
+    },
+    {
+        $lookup:{
+            from:"orders",
+            localField:"_id",
+            foreignField:"customerId",
+            as:"Eve Data"
+
+        }
+    }
+])
+
+
+Get customers who live in either "Chicago" or "New York".
+
+db.customers.aggregate([
+    {
+        $match:{
+            $or:[ {city: 'Chicago'},{city: 'New York'} ]
+        }
+    }
+])
+
+
+Show users who haven't logged in in the last 30 days.
+
+db.users.find({
+    login:{$lt :new Date(Date.now()-30*24*60*60*1000)}
+})
+
+
+Find all female employees in the "Sales" department.
+
+db.employees.aggregate([
+    {
+        $match:{
+            gender:"female"
+        }
+    },
+    {
+        $lookup:{
+            from:"department",
+            localField:"departmentId",
+            foreignField:"_id"
+            as:departmentInfo
+        }
+    },
+    {
+        $unwind:"$departmentInfo"
+    },
+    {
+        $match:{
+            departmentInfo.name:"Sales"
+        }
+    }
+])
+
+Find orders where the payment method is "Cash".
+
+db.orders.aggregate([
+    {
+        $match:{
+            amount:{$gt:1000}
+        }
+    }
+])
+
+Show the top 5 most recent orders based on date.
+
+db.orders.aggregate([
+    {
+        $sort:{orderdate:-1}
+    },{
+        $limit:2
+    }
+])
+
+Display only those users whose age is not equal to 25.
+
+db.users.aggregate([
+    {
+        $match:{
+            age:{$ne:25}
+        }
+    }
+])
