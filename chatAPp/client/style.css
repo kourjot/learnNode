@@ -1,0 +1,14 @@
+body {
+  padding: 20px;
+}
+
+input, textarea {
+  display: red;
+  margin: 10px 0;
+  padding: 8px;
+  width: 300px;
+}
+
+button {
+  padding: 8px 12px;
+}

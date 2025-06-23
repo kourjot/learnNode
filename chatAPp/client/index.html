@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+   <style>
+    body {
+  padding: 20px;
+}
+
+input, textarea {
+  display: red;
+  margin: 10px 0;
+  padding: 8px;
+  width: 300px;
+}
+#username{
+    color:brown
+}
+button {
+  padding: 8px 12px;
+}
+   </style>
+</head>
+<body>
+  <div id="join-container">
+    <h2>Join Room</h2>
+    <input id="username" placeholder="Username" />
+    <input id="roomId" placeholder="Room ID" />
+    <button onclick="joinRoom()">Join</button>
+  </div>
+
+  <div id="editor-container" style="display: none;">
+    <h2 id="room-display">Room: </h2>
+    <p>Users: <span id="user-list"></span></p>
+    <textarea id="code-editor" rows="20" cols="80"></textarea>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
